@@ -1,0 +1,97 @@
+\documentclass{article}
+
+\usepackage{hyperref}
+\usepackage{aurl}
+\daurl{swo}{http://www.ebi.ac.uk/swo/}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{cleveref}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{tabulary}
+\usepackage{csquotes}
+\newcommand{\citet}{\cite}% citet is not defined without natbib
+\newcommand{\citep}{\cite}% citep is not defined without natbib
+
+\title{Interlinking HITO or write about the Instance Generator\\User Assisted Ontology Instance Generation}
+\author{Konrad Höffner\\
+	IMISE \\
+	\and 
+	Add The Others Here\\
+	IMISE and UMIT\\
+	}
+\date{\today}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+At the start, HITO defined everything as new classes and properties.
+However this didn't take advantage of the LOD cloud and was thus changed.
+Replacing self-defined classes with links to existing ones reduces development effort, improves maintainability and allows deeper exploration.
+We investigate ontologies that are close to HITO for their suitability as replacements for HITO classes.
+\end{abstract}
+
+\section{Introduction}
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{img/hito-diagram.pdf}
+\end{figure}
+
+\section{Related Ontologies}
+\begin{itemize}
+\item DBpedia~\citep{dbpedia}, the central knowledge base of the LOD cloud, contains many properties and classes related to software products. However the data quality is lacking. 
+\item SWO (The Software Ontology)~\citep{}
+\item DOAP (Description of a Project)\footnote{\url{http://usefulinc.com/ns/doap}} 
+
+\end{itemize}
+
+
+\subsection{Software License}
+
+\begin{tabular}{llcc}
+\toprule
+Ontology	&property			&range	&instances\\
+\midrule
+DBpedia		&\aurl{dbo}{license}		&---	&---\\
+SWO		&\aurl{swo}{SWO\_0000002}	&	&\\
+DOAP		&\\
+\bottomrule
+\end{tabular}
+
+\subsection{Operating System}
+
+\begin{tabular}{llcc}
+\toprule
+Ontology	&property			&range	&instances\\
+\midrule
+DBpedia		&\aurl{dbo}{operatingSystem}	&---	&---\\
+YAGO		&				&	&\\
+SWO		&\\
+DOAP		&\\
+\bottomrule
+\end{tabular}
+
+\begin{tabular}{llcccc}
+\toprule
+Ontology	&class					&instances	&missing			&wrong\\
+\midrule
+YAGO		&\aurl{yago}{OperatingSystem106568134}	&320		&winxp, arch linux		&many\\
+YAGO		&\aurl{yago}{WikicatOperatingSystems}	&		&winxp, arch linux		&many\\
+SWO		&\\
+DOAP		&\\
+\bottomrule
+\end{tabular}
+
+
+\subsection{Programming Language}
+
+
+\section{Conclusions}\label{conclusions}
+There is no longer \LaTeX{} example which was written by \cite{swo}.
+
+\section{Future Work}
+CaLiGraph\footnote{paper not yet finished, \url{http://caligraph.org}} offers a much larger amount of classes (\num{755964}) than DBpedia (685) provide additional knowledge by processing categories and listpages of Wikipedia using machine learning methods.
+
+\bibliographystyle{plain}
+\bibliography{paper}
+\end{document}
+
