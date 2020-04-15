@@ -13,13 +13,8 @@
 \newcommand{\citet}{\cite}% citet is not defined without natbib
 \newcommand{\citep}{\cite}% citep is not defined without natbib
 
-\title{Interlinking HITO or write about the Instance Generator\\User Assisted Ontology Instance Generation}
-\author{Konrad Höffner\\
-	IMISE \\
-	\and 
-	Add The Others Here\\
-	IMISE and UMIT\\
-	}
+\title{ Sustainability of HITO by using Linked Open Data Technology in order to reuse existing catalogues and to make  HITO results reusable by other projects}
+\author{IMISE and UMIT people}
 \date{\today}
 \begin{document}
 \maketitle
@@ -84,6 +79,44 @@ DOAP		&\\
 
 \subsection{Programming Language}
 
+\section{Other}
+\begin{}
+link to studies, which in turn are systematically described by our ontology,
+links to different catalogues for features and functions, for every catalogue:
+how is it available?
+how can we use it?
+individual services for every catalogue?
+links to DBpedia and other external sources
+use of semantic web tools
+faceted search
+graphical representation (SNIK GUI)
+use of external services
+
+\section{Instance Tool}
+\subsection{Ranking}
+- problem of selecting amongst hundreds of entries
+- combo box
+- there are too many instances to comfortably fit a list
+- add search
+- rank them: (1) how to rank (2) how to save the precomputed ranking in a standardized way
+- we use x by default but can be configured
+- could use "dbo:wikiPageOutDegree" for operating system (in dbpedia live)
+- but we just use the number of software products that support this operating system (dbo:operatingSystem) and sort by that descending and with a count of at least 3
+- User Interface ontology by Tim Berners-Lee
+\aurl{ui}{sortPriority}, highest first, using the number of times an operating system was used by a software system
+or use negative numbers
+
+\subsection{Similarity}
+In order to check if a software product has already been modelled or if a similar alternative exists for a given product, we provide a similarity function between two given products. ...
+DBpedia ranker?
+- textual similarity between citations?
+- jaccard between classifieds
+- see "Ranking the Linked Data: The Case of DBpedia" \url{https://link.springer.com/content/pdf/10.1007\%2F978-3-642-13911-6.pdf}
+
+\section{Related Work}
+to read:\\
+Ontology-based User Interface Development: User Experience Elements Pattern
+Goals for a Human-Data Interface\footnote{\url{https://www.w3.org/DesignIssues/TabulatorGoals.html}}
 
 \section{Conclusions}\label{conclusions}
 There is no longer \LaTeX{} example which was written by \cite{swo}.
