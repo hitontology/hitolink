@@ -10,6 +10,7 @@
 \usepackage{booktabs}
 \usepackage{tabulary}
 \usepackage{csquotes}
+\usepackage{acronym}
 \newcommand{\citet}{\cite}% citet is not defined without natbib
 \newcommand{\citep}{\cite}% citep is not defined without natbib
 
@@ -18,6 +19,10 @@
 \date{\today}
 \begin{document}
 \maketitle
+
+\begin{acronym}[SPARQL]
+\acro{HITO}{Health IT Ontology}
+\end{acronym}
 
 \begin{abstract}
 At the start, HITO defined everything as new classes and properties.
@@ -34,7 +39,7 @@ We investigate ontologies that are close to HITO for their suitability as replac
 \subsection{Subject}
 The aim of \ac{HITO} is to enable systematic descriptions of application systems and software products in health IT.
 We interlink and enrich \ac{HITO} using DBpedia, SWO and ...
-The initial draft of \ac{HITO}~\citep{At the start, HITO defined everything as new classes and properties.
+The initial draft of \ac{HITO}~\citep{towardsprecise} defined everything as new classes and properties.
 
 \begin{itemize}
 
