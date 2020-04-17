@@ -22,6 +22,10 @@
 
 \begin{acronym}[SPARQL]
 \acro{HITO}{Health IT Ontology}
+\acro{SPARQL}{SPARQL}
+\acro{SWO}{The Software Ontology}
+\acro{DOAP}{Description of a Project}
+\acro{MEDFLOSS}{Medical Free/Libre Open Source Software}
 \end{acronym}
 
 \begin{abstract}
@@ -34,30 +38,31 @@ We investigate ontologies that are close to HITO for their suitability as replac
 \section{Introduction}
 \begin{figure}[h]
 \includegraphics[width=\textwidth]{img/hito-diagram.pdf}
+\caption{fig:hito-diagram}
+\label{The HITO ontology d}
 \end{figure}
 
 \subsection{Subject}
-The aim of \ac{HITO} is to enable systematic descriptions of application systems and software products in health IT.
-We interlink and enrich \ac{HITO} using DBpedia, SWO and ...
-The initial draft of \ac{HITO}~\citep{towardsprecise} defined everything as new classes and properties.
+The aim of the \acf{HITO} is to enable systematic descriptions of application systems and software products in health IT.
+In the initial draft of \ac{HITO}~\citep{towardsprecise}, classes for related concepts such as operating systems, licenses and programming languages lie in the HITO namespace.
+We consider candidate sets of individuals from the LOD cloud for each of those concepts.
+Based on the data quality, we select and refine sets of invididuals from DBpedia~\citep{dbpedia} and \ac{SWO}~\citep{swo}.
+We allow users to generate new instances and to select among those individuals by developing and offering a user interface to generate new instances of \ac{MEDFLOSS} products.
+This is joined with converted \ac{MEDFLOSS} products from \url{https://www.medfloss.org}.
 
-\begin{itemize}
+\subsection{Problem}
+Not all \ac{MEDFLOSS} domain experts are fluent in Semantic Web technologies.
+Creating new instances in an RDF syntax such as Turtle is a challenge for them, that a user interface can alleviate.
+Relying purely on self-defined classes to describe \ac{MEDFLOSS} products is problematic however, because even with a user interface our frequent use case of creating a new instance is still time-consuming.
+There are many related individuals, such as programming languages, licenses and operating systems, that need to be created as well.
+Furthermore, letting users create those attribute individuals risks data quality problems such as duplicates, inconsistencies and missing or incorrect values.
+Finally, self-defined individuals would lack updated values and new addition after the end of the research project.
 
-\item Welche Situation liegt vor und was soll getan werden?
-\item Worum geht es eigentlich?
-\item In welcher Welt/Domäne oder welchem Arbeitsbereich/-gebiet bewegen wir uns im Rahmen der Arbeit
-
-\end{itemize}
-
-% \subsection{Problematik}
-% \begin{itemize}
-% \item Warum ist die geschilderte vorliegende Situation problematisch?
-% \item Worin bestehen die Probleme?
-% \item Für wen ist sie problematisch?
-% \end{itemize}
-%
-% \subsection{Motivation}
-%
+\subsection{Motivation}
+Generating high-quality sets of individuals from existing sources and presenting them in a UI has multiple benefits:
+(1) Large time-savings when creating instances of \ac{MEDFLOSS} products.
+(2) Improved data quality in the dimensions~\citep{dataquality} syntactic validity, semantic accuracy, consistency, completeness, trustworthiness, understandability timelyness and interoperability 
+(3) Improved intuitiveness
 % \begin{itemize}
 %
 % \item Warum lohnt es sich, die genannten Probleme zu lösen?
@@ -69,6 +74,8 @@ The initial draft of \ac{HITO}~\citep{towardsprecise} defined everything as new 
 %
 % \section{Problemstellung}
 %
+% - sparql queries so that it is not static 
+
 % Vermeiden Sie Formulierungen wie \glqq Es ist nicht bekannt, ob...\grqq oder \glqq Es existiert kein...\grqq.
 %
 % Solche Formulierungen kehren in der Regel einfach das bereits angedachte Lösungsmodell um und postulieren das Fehlen der angedachten Lösung einfach als Problem. Das ist ähnlich, wie wenn es  in der Werbung hieße ?Wenn Sie das Problem haben, dass Ihnen Aspirin fehlt, dann kaufen Sie doch Aspirin?. Sinnvoller ist diese Aussage:  ?Wenn Sie das Problem haben, dass Ihnen der Kopf weh tut, dann kaufen Sie doch Aspirin?. Es ist also bei der Problembeschreibung erforderlich, sich in die Lage dessen zu versetzen, den man mit der angedachten Lösung beglücken möchte. Sein Problem ist zu ermitteln und so zu formulieren, er/sie das Problem wiedererkennt und dadurch geneigt ist, sich für die Lösung des Problems zu interessieren.
@@ -121,7 +128,7 @@ The initial draft of \ac{HITO}~\citep{towardsprecise} defined everything as new 
 %%%
 \section{Related Ontologies}
 \begin{itemize}
-\item DBpedia~\citep{dbpedia}, the central knowledge base of the LOD cloud, contains many properties and classes related to software products. However the data quality is lacking.
+\item DBpedia, the central knowledge base of the LOD cloud, contains many properties and classes related to software products. However the data quality is lacking.
 \item SWO (The Software Ontology)~\citep{}
 \item DOAP (Description of a Project)\footnote{\url{http://usefulinc.com/ns/doap}}
 
@@ -215,3 +222,4 @@ CaLiGraph\footnote{paper not yet finished, \url{http://caligraph.org}} offers a 
 \bibliographystyle{plain}
 \bibliography{paper}
 \end{document}
+
