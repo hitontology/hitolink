@@ -1,5 +1,6 @@
-\documentclass{article}
+\documentclass[sw]{iosart2x}
 
+%%%%%%%%%%% Put your definitions here
 \usepackage{hyperref}
 \usepackage[1000]{aurl}
 \daurl{swo}{http://www.ebi.ac.uk/swo/}
@@ -11,14 +12,8 @@
 \usepackage{tabulary}
 \usepackage{csquotes}
 \usepackage[nolist]{acronym}
-\newcommand{\citet}{\cite}% citet is not defined without natbib
-\newcommand{\citep}{\cite}% citep is not defined without natbib
-
-\title{HITOLink: Ontology-based creation of MedFloss software products}
-\author{IMISE and UMIT people}
-\date{\today}
-\begin{document}
-\maketitle
+%\newcommand{\citet}{\cite}% citet is not defined without natbib
+%\newcommand{\citep}{\cite}% citep is not defined without natbib
 
 \begin{acronym}[SPARQL]
 \acro{HITO}{Health IT Ontology}
@@ -27,22 +22,79 @@
 \acro{DOAP}{Description of a Project}
 \acro{MEDFLOSS}{Medical Free/Libre Open Source Software}
 \end{acronym}
+%%%%%%%%%%% End of definitions
+
+\pubyear{2021}
+\volume{0}
+\firstpage{1}
+\lastpage{1}
+
+\begin{document}
+
+\begin{frontmatter}
+%\pretitle{}
+\title{HITO: Medical Free/Libre and Open Source Software Products as Linked Open Data}
+\runtitle{MedFLOSS as Linked Open Data}
+%\subtitle{}
+
+\begin{aug}
+\author[A]{\inits{N.}\fnms{Name1} \snm{Surname1}\ead[label=e1]{first@somewhere.com}%
+\thanks{Corresponding author. \printead{e1}.}}
+%\author[B]{\inits{N.N.}\fnms{Name2 Name2} \snm{Surname2}\ead[label=e2]{second@somewhere.com}}
+%\author[B]{\inits{N.-N.}\fnms{Name3-Name3} \snm{Surname3}\ead[label=e3]{third@somewhere.com}}
+\address[A]{Department first, \orgname{University or Company name}, Abbreviate US states, \cny{Country}\printead[presep={\\}]{e1}}
+%\address[B]{Department first, \orgname{University or Company name}, Abbreviate US states, \cny{Country}\printead[presep={\\}]{e2,e3}}
+\end{aug}
+
+%\begin{review}{editor}
+%\reviewer{\fnms{First} \snm{Editor}\address{\orgname{University or Company name}, \cny{Country}}}
+%\reviewer{\fnms{Second} \snm{Editor}\address{\orgname{First University or Company name}, \cny{Country}
+%    and \orgname{Second University or Company name}, \cny{Country}}}
+%\end{review}
+%\begin{review}{solicited}
+%\reviewer{\fnms{First} \snm{Solicited reviewer}\address{\orgname{University or Company name}, \cny{Country}}}
+%\reviewer{\snm{anonymous reviewer}}
+%\end{review}
+%\begin{review}{open}
+%\reviewer{\fnms{First} \snm{Open Reviewer}\address{\orgname{University or Company name}, \cny{Country}}}
+%\end{review}
 
 \begin{abstract}
-At the start, HITO defined everything as new classes and properties.
-However this didn't take advantage of the LOD cloud and was thus changed.
-Replacing self-defined classes with links to existing ones reduces development effort, improves maintainability and allows deeper exploration.
-We investigate ontologies that are close to HITO for their suitability as replacements for HITO classes.
+Medical software is a large global market and the choice of software for each application system is criticial for the stability, efficiency and capability of a hospital information systems.
+However it is time consuming and error prone to compare those products using official documents such as advertisements, presentations and web sites.
+Providing transparent and structured data about medical software, including open free/libre source products, helps setting up new hospitals, especially in resource-poor environments.
+The open data initiative Medfloss.org provide semi-structured descriptions about software descriptions, however it does not cover some aspects such as features and the data is not available as a structured format.
+To alleviate these shortcomings, we present HITO, an ontology for and a knowledge graph of software products.
+%Following the best-of-breed strategy, hospitals can choose amongst the best suited software products for each of its many application systems.
+
+%At the start, HITO defined everything as new classes and properties.
+%However this didn't take advantage of the LOD cloud and was thus changed.
+%Replacing self-defined classes with links to existing ones reduces development effort, improves maintainability and allows deeper exploration.
+%We investigate ontologies that are close to HITO for their suitability as replacements for HITO classes.
 \end{abstract}
 
-\section{Introduction}
+\begin{keyword}
+\kwd{health information systems}
+\kwd{medical software}
+\kwd{open source software}
+\kwd{knowledge graph}
+\kwd{linked data}
+\kwd{open data}
+\kwd{ontology}
+\end{keyword}
+
+\end{frontmatter}
+
+%%%%%%%%%%% The article body starts:
+\section{Introduction}\label{sec:introduction}
 \begin{figure}[h]
 \includegraphics[width=\textwidth]{img/hito-diagram.pdf}
 \caption{fig:hito-diagram}
 \label{The HITO ontology d}
 \end{figure}
 
-\subsection{Subject}
+\section{Introduction}
+%\subsection{Subject}
 The aim of the \acf{HITO} is to enable systematic descriptions of application systems and software products in health IT.
 In the initial draft of \ac{HITO}~\citep{towardsprecise}, classes for related concepts such as operating systems, licenses and programming languages lie in the HITO namespace.
 We consider candidate sets of individuals from the LOD cloud for each of those concepts.
@@ -50,82 +102,20 @@ Based on the data quality, we select and refine sets of invididuals from DBpedia
 We allow users to generate new instances and to select among those individuals by developing and offering a user interface to generate new instances of \ac{MEDFLOSS} products.
 This is joined with converted \ac{MEDFLOSS} products from \url{https://www.medfloss.org}.
 
-\subsection{Problem}
+%\subsection{Problem}
 Not all \ac{MEDFLOSS} domain experts are fluent in Semantic Web technologies.
 Creating new instances in an RDF syntax such as Turtle is a challenge for them, that a user interface can alleviate.
 Relying purely on self-defined classes to describe \ac{MEDFLOSS} products is problematic however, because even with a user interface our frequent use case of creating a new instance is still time-consuming.
 There are many related individuals, such as programming languages, licenses and operating systems, that need to be created as well.
 Furthermore, letting users create those attribute individuals risks data quality problems such as duplicates, inconsistencies and missing or incorrect values.
 Finally, self-defined individuals would lack updated values and new addition after the end of the research project.
-
+% small hospitals and those in developing countries are restricted in their choice of software products due to their high cost
 \subsection{Motivation}
 Generating high-quality sets of individuals from existing sources and presenting them in a UI has multiple benefits:
 (1) Large time-savings when creating instances of \ac{MEDFLOSS} products.
 (2) Improved data quality in the dimensions~\citep{dataquality} syntactic validity, semantic accuracy, consistency, completeness, trustworthiness, understandability timelyness and interoperability 
 (3) Improved intuitiveness
-% \begin{itemize}
-%
-% \item Warum lohnt es sich, die genannten Probleme zu lösen?
-% \item Wer wird welchen Nutzen von dieser Abschlussarbeit haben?
-% \item Warum ist die Arbeit wichtig?
-% \item Wer wartet sehnlichst auf die Fertigstellung der Arbeit
-%
-% \end{itemize}
-%
-% \section{Problemstellung}
-%
-% - sparql queries so that it is not static 
 
-% Vermeiden Sie Formulierungen wie \glqq Es ist nicht bekannt, ob...\grqq oder \glqq Es existiert kein...\grqq.
-%
-% Solche Formulierungen kehren in der Regel einfach das bereits angedachte Lösungsmodell um und postulieren das Fehlen der angedachten Lösung einfach als Problem. Das ist ähnlich, wie wenn es  in der Werbung hieße ?Wenn Sie das Problem haben, dass Ihnen Aspirin fehlt, dann kaufen Sie doch Aspirin?. Sinnvoller ist diese Aussage:  ?Wenn Sie das Problem haben, dass Ihnen der Kopf weh tut, dann kaufen Sie doch Aspirin?. Es ist also bei der Problembeschreibung erforderlich, sich in die Lage dessen zu versetzen, den man mit der angedachten Lösung beglücken möchte. Sein Problem ist zu ermitteln und so zu formulieren, er/sie das Problem wiedererkennt und dadurch geneigt ist, sich für die Lösung des Problems zu interessieren.
-%
-% \begin{itemize}
-%
-% \item Welche der in der Problematik geschilderten Probleme sollen im Rahmen dieser Abschlussarbeit gelöst werden?
-% \end{itemize}
-% Bitte jedes Einzelproblem nummerieren und mit 1-2 Sätzen beschreiben:
-%
-% \begin{itemize}
-%
-%
-% \item Problem P1: Problemname 1 mit kurzer Problembeschreibung
-% \item Problem P2: Problemname 2 mit kurzer Problembeschreibung
-% \end{itemize}
-%
-% \section{Zielsetzung}
-%
-% \begin{itemize}
-% \item Welche Ergebnisse werden mit dieser Abschlussarbeit angestrebt und welche der o.g. Probleme sollen damit jeweils gelöst werden?
-% \end{itemize}
-% Bitte jedes Ziel kurz oder ggf. mit Stichworten beschreiben:
-% \begin{itemize}
-% \item Ziel(e)/angestrebte(s) Ergebnis(se) zur Lösung von Problem P1:
-% 	\begin{itemize}
-% 	\item Ziel Z1.1: ....
-% 	\item Ziel Z1.2: ....
-% 	\end{itemize}
-% \end{itemize}
-%
-% \section{Aufgabenstellung}
-%
-% \begin{itemize}
-% \item Wie sollen die o.g. Ziele erreicht werden?
-% \item Was soll zur Erreichung der Ziele bzw. zur Schaffung der Ergebnisse getan werden?
-% \item Welche Fragen müssen zur Erreichung der Ziele bzw. zur Schaffung der Ergebnisse beantwortet  werden?
-% \end{itemize}
-%
-%
-% Bitte geben Sie zu jedem der o.g. Ziele mindestens zwei Aufgaben bzw. Fragen an, die bearbeitet bzw. beantwortet werden sollen. Bitte jede Aufgabe bzw. Frage kurz oder ggf. mit Stichworten beschreiben:
-%
-% \begin{itemize}
-% \item Aufgaben zu Ziel Z1.1:
-% 	\begin{itemize}
-% 	\item Aufgabe A1.1.1: ....
-% 	\item Aufgabe A1.1.2: ....
-% 	\end{itemize}
-% \end{itemize}
-%%%
 \section{Related Ontologies}
 \begin{itemize}
 \item DBpedia, the central knowledge base of the LOD cloud, contains many properties and classes related to software products. However the data quality is lacking.
@@ -209,9 +199,15 @@ DBpedia ranker?
 - see "Ranking the Linked Data: The Case of DBpedia" \url{https://link.springer.com/content/pdf/10.1007\%2F978-3-642-13911-6.pdf}
 
 \section{Related Work}
+medfloss.org?
+
 to read:\\
 Ontology-based User Interface Development: User Experience Elements Pattern
 Goals for a Human-Data Interface\footnote{\url{https://www.w3.org/DesignIssues/TabulatorGoals.html}}
+
+\section{HTIO}
+\subsection{Ontology}
+\subsection{Data sources}
 
 \section{Conclusions}\label{conclusions}
 There is no longer \LaTeX{} example which was written by \cite{swo}.
