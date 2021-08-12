@@ -4,6 +4,7 @@
 \usepackage{hyperref}
 \usepackage[1000]{aurl}
 \daurl{swo}{http://www.ebi.ac.uk/swo/}
+\daurl{}{http://hitontology.eu/ontology/}
 \usepackage{graphicx}
 \usepackage{microtype}
 \usepackage{cleveref}
@@ -14,6 +15,7 @@
 \usepackage[nolist]{acronym}
 %\newcommand{\citet}{\cite}% citet is not defined without natbib
 %\newcommand{\citep}{\cite}% citep is not defined without natbib
+\newcommand{\hito}[1]{\aurl{}{#1}}
 
 \begin{acronym}[SPARQL]
 \acro{HITO}{Health IT Ontology}
@@ -33,8 +35,8 @@
 
 \begin{frontmatter}
 %\pretitle{}
-\title{HITO: Medical Free/Libre and Open Source Software Products as Linked Open Data}
-\runtitle{MedFLOSS as Linked Open Data}
+\title{HITO Ontology and Knowledge Base: Medical Free/Libre and Open Source Software Products as Linked Open Data}
+\runtitle{HITO Ontology and Knowledge Base}
 %\subtitle{}
 
 \begin{aug}
@@ -78,7 +80,6 @@ To alleviate these shortcomings, we present HITO, an ontology for and a knowledg
 \kwd{medical software}
 \kwd{open source software}
 \kwd{knowledge graph}
-\kwd{linked data}
 \kwd{open data}
 \kwd{ontology}
 \end{keyword}
@@ -87,13 +88,7 @@ To alleviate these shortcomings, we present HITO, an ontology for and a knowledg
 
 %%%%%%%%%%% The article body starts:
 \section{Introduction}\label{sec:introduction}
-\begin{figure}[h]
-\includegraphics[width=\textwidth]{img/hito-diagram.pdf}
-\caption{fig:hito-diagram}
-\label{The HITO ontology d}
-\end{figure}
 
-\section{Introduction}
 %\subsection{Subject}
 The aim of the \acf{HITO} is to enable systematic descriptions of application systems and software products in health IT.
 In the initial draft of \ac{HITO}~\citep{towardsprecise}, classes for related concepts such as operating systems, licenses and programming languages lie in the HITO namespace.
@@ -116,14 +111,62 @@ Generating high-quality sets of individuals from existing sources and presenting
 (2) Improved data quality in the dimensions~\citep{dataquality} syntactic validity, semantic accuracy, consistency, completeness, trustworthiness, understandability timelyness and interoperability 
 (3) Improved intuitiveness
 
-\section{Related Ontologies}
+\section{Related Work}
 \begin{itemize}
 \item DBpedia, the central knowledge base of the LOD cloud, contains many properties and classes related to software products. However the data quality is lacking.
 \item SWO (The Software Ontology)~\citep{}
 \item DOAP (Description of a Project)\footnote{\url{http://usefulinc.com/ns/doap}}
-
 \end{itemize}
 
+\section{HITO Ontology}
+
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{img/hito-diagram.pdf}
+\caption{fig:hito-diagram}
+\label{The HITO ontology for representing properties of studies and software products, such as features and enterprise functions.}
+\end{figure}
+
+The HITO ontology, introduced in \citet{hitometh,towardsprecise}, describes software products and their properties as well as research studies about such software products.
+see \cref{fig:hito-diagram}
+The core classes related to \hito{SoftwareProduct} are:
+\begin{itemize}
+\item \hito{EnterpriseFunction}
+\item \hito{Feature}
+%\item UserGroup
+\item \hito{ApplicationSystem}, and
+\item \hito{OrganizationalUnit}
+\end{itemize}
+
+An enterprise function of a hospital is a ... source ...
+A feature of a software product is a ...
+An application system is a ... source ...
+An organisational units, such as a laboratory or a ..., helps ... .
+
+Each of those classes is referenced in a product description represented by a \emph{citation}, which can be linked to a \emph{classified} entry of a \emph{catalogue}.
+For example, the software product \hito{Bahmni} references a feature \enquote{...} represented by the citation resource \hito{BahmniFeat...}, which is linked to the classified feature \hito{Bb...} of the catalogue \hito{BbFeatureCatalogue} extracted from \citet{bb}.
+
+\section{HITO Knowledge Base}
+
+\section{Architecture}
+\Cref{fig:architecture} shows the architecture with the SPARQL endpoint as the central API for all user interfaces:
+\begin{itemize}
+\item RDF browser
+\item faceted search
+\item graph visualization
+\end{itemize}
+
+
+As RDF browser we use LodView~\citep{lodview}.
+
+\begin{figure}[h]
+%\includegraphics[width=\textwidth]{img/hito-architecture.pdf}
+\caption{fig:hito-architecture}
+\label{The architecture of HITO}
+\end{figure}
+
+\section{Services}
+\section{Data Collection}
+Software product data entries are held in a relational database and are created, updated and deleted in a web application using the Python Flask AppBuilder based on the SQLAlchemy framework.
 
 \subsection{Software License}
 
